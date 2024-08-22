@@ -1,4 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+/*Fonte para textos em geral*/
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body, p, a, button, input, .app-text { margin: 0; font-family: 'IBM Plex Mono', sans-serif; }
+
+/*Titulos*/
+
+h1, h2, h3, .app-title {
+    font-family: 'IBM Plex Sans', sans-serif;
+  }

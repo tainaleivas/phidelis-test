@@ -1,35 +1,50 @@
 <main class="container">
   <div class="content">
-    <div class="jumbotron">
-      <h1>Todo-List</h1>
-      <ul class="list-group" role="list">
-        <li
-          *ngFor="let item of items"
-          class="list-group-item d-flex justify-content-between align-items-center"
-          role="listitem"
-        >
-          <div>
-            <strong>{{ item.title }}</strong>
-            <p>{{ item.description }}</p>
-          </div>
-          <button
-            (click)="removeTask(item)"
-            class="btn btn-danger btn-sm"
-            aria-label="Excluir tarefa"
-          >
-            Excluir
-          </button>
-        </li>
-      </ul>
-
-      <!-- Botão para abrir o modal -->
+    <div class="main-list">
+      <!-- Botão centralizado na tela -->
       <button
+        mat-raised-button
+        color="primary"
         (click)="openTaskModal()"
-        class="btn btn-primary mt-3"
+        class="highlight-button"
         aria-label="Adicionar tarefa"
       >
         Adicionar Nova Tarefa
       </button>
+
+      <!-- Lista de tarefas exibida como grid -->
+      <div class="task-list">
+        <mat-card *ngFor="let item of items" class="task-card">
+          <mat-card-header>
+            <mat-card-title [ngClass]="{ 'completed': item.completed }">
+              {{ item.title }}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p [ngClass]="{ 'completed': item.completed }">
+              {{ item.description }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="task-actions">
+            <!-- Checkbox de Conclusão -->
+            <mat-checkbox
+              [checked]="item.completed"
+              (change)="toggleCompletion(item)"
+            >
+            </mat-checkbox>
+
+            <!-- Botão de Exclusão -->
+            <button
+              mat-button
+              color="warn"
+              (click)="removeTask(item)"
+              aria-label="Excluir tarefa"
+            >
+              Excluir
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </div>
   </div>
 </main>
