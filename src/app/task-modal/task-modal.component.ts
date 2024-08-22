@@ -15,7 +15,7 @@ export class TaskModalComponent {
 
   onTaskAdded(task: Task) {
     // Certifique-se de que 'completed' está presente
-    task.completed = false; // Define como falso por padrão, se necessário
-    this.dialogRef.close(task);
+    task.completed = false;
+    this.dialogRef.close(task); 
   }
 }
