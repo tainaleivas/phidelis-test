@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Task } from '../models/task-model';
-import { TaskFormComponent } from "../task-form/task-form.component"; // Importa modelo de tarefa
+import { TaskFormComponent } from '../task-form/task-form.component';
 
 @Component({
   selector: 'app-task-modal',
@@ -14,6 +14,8 @@ export class TaskModalComponent {
   constructor(private dialogRef: MatDialogRef<TaskModalComponent>) {}
 
   onTaskAdded(task: Task) {
-    this.dialogRef.close(task); // Fecha o modal e envia a tarefa para o AppComponent
+    // Certifique-se de que 'completed' está presente
+    task.completed = false; // Define como falso por padrão, se necessário
+    this.dialogRef.close(task);
   }
 }
