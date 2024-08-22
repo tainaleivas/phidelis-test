@@ -14,6 +14,8 @@ export class TaskModalComponent {
   constructor(private dialogRef: MatDialogRef<TaskModalComponent>) {}
 
   onTaskAdded(task: Task) {
-    this.dialogRef.close(task); // Fecha o modal e envia a tarefa para o AppComponent
+    // Garanta que meu objeto 'Task' tenha a propriedade 'completed'
+    task.completed = false; 
+    this.dialogRef.close(task);
   }
 }
