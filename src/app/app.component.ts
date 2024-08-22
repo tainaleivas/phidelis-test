@@ -27,6 +27,9 @@ interface Task {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   public items: Task[] = []; // Lista de tarefas
 
   constructor(private dialog: MatDialog) {}
