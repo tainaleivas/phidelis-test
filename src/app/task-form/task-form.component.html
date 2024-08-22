@@ -1,0 +1,42 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="title">Título da Tarefa</label>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        required
+        placeholder="Digite o título da tarefa"
+      />
+      <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched">
+        <small *ngIf="taskForm.get('title')?.errors?.['required']">
+          O título é obrigatório.
+        </small>
+        <small *ngIf="taskForm.get('title')?.errors?.['minlength']">
+          O título deve ter pelo menos 3 caracteres.
+        </small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="description">Descrição da Tarefa</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        placeholder="Faça uma breve descrição da tarefa."
+      ></textarea>
+      <div
+        *ngIf="
+          taskForm.get('description')?.invalid &&
+          taskForm.get('description')?.touched
+        "
+      >
+        <small *ngIf="taskForm.get('description')?.errors?.['maxlength']">
+          A descrição não pode ter mais de 200 caracteres.
+        </small>
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="taskForm.invalid">Salvar Tarefa</button>
+  </form>
+  

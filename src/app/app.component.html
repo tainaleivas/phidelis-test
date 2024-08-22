@@ -1,20 +1,22 @@
-<main class="main">
+<main class="container">
   <div class="content">
-    <div class="left-side">
+    <div class="jumbotron">
       <h1>Todo-List</h1>
-      <ul>
-        <li *ngFor="let item of items"> 
+      <ul class="list-group">
+        <li *ngFor="let item of items" class="list-group-item"> 
           {{ item }} 
 
-          <button (click)="removeTask(item)">Excluir</button>
+          <button (click)="removeTask(item)" class="btn btn-danger">Excluir</button>
         </li>
       </ul>
 
-      {{task}}
-
-      <input type="text" [(ngModel)]="task">
+      <div class="form-group">
+        <label>Nome da Tarefa</label>
+        <input type="text" [(ngModel)]="task" class="form-control">
+      </div>
+      <app-task-form></app-task-form>
       
-      <button (click)="addTask()">Adicionar tarefa</button>
+      <button (click)="addTask()" class="btn btn-primary">Adicionar tarefa</button>
     </div>
   </div>
 </main>
