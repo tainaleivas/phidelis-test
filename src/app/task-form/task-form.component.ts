@@ -1,29 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import {NgIf} from '@angular/common';
 
-
 @Component({
   selector: 'app-task-form',
-  standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  standalone: true, // Torna o componente standalone
+  imports: [ReactiveFormsModule, NgIf], // Importa os módulos necessários diretamente
   templateUrl: './task-form.component.html',
-  styleUrl: './task-form.component.css'
+  styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent {
+  @Output() taskAdded = new EventEmitter<string>();
   taskForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.taskForm = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(3)]],
-      description: ['', [Validators.maxLength(200)]],
+      title: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
   onSubmit() {
     if (this.taskForm.valid) {
-      // Lógica para enviar o formulário
-      console.log('Formulário enviado:', this.taskForm.value);
+      this.taskAdded.emit(this.taskForm.value.title);
+      this.taskForm.reset();
     }
   }
 }

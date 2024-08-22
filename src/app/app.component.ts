@@ -11,22 +11,22 @@ import { TaskFormComponent } from "./task-form/task-form.component";
     RouterOutlet,
     NgFor,
     FormsModule,
-    TaskFormComponent
+    TaskFormComponent,
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
 
-  public task = "";
-  public items = ['item 1', 'item 2', 'item 3', 'item 4'];
+  public items: string[] = ['item 1', 'item 2', 'item 3', 'item 4'];
 
-  addTask() {
-    this.items.push(this.task)
+  addTask(task: string) {
+    if (task) {
+      this.items.push(task);
+    }
   }
 
-  removeTask(item: string) {
-    this.items.splice(this.items.indexOf(item), 1)
+  removeTask(task: string) {
+    this.items = this.items.filter(item => item !== task);
   }
-
 }
