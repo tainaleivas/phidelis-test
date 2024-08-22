@@ -1,5 +1,12 @@
 # TodoList
 Para executar o projeto é necessário apenas fazer um clone e utilizar a **branch Development**.
+
+## Dificuldades principais que tive durante o desenvolvimento do projeto e não consegui resolver:
+- Mock e conexão de API: Quando testado a conexão minha interface sumia.
+- Estilização com bootstrap e Angular UI
+- Entender bem a sintaxe do Angular para criação dos componentes.
+
+- O histórico de commits mostram o progresso no desenvolvimento dentro dos meus conhecimentos e pesquisas na documentação
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
 
 ## Development server
